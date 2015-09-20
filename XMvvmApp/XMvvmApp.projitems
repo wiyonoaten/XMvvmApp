@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>9e85533a-bc88-4c58-8ae6-f950af8c0ca4</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>XMvvmApp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BasicViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindingCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\UiThreadSchedulerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IViewModelExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ObservableList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\IThreadScheduler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ExpressionExtensions.cs" />
+  </ItemGroup>
+</Project>
