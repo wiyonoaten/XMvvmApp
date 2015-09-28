@@ -16,10 +16,10 @@ namespace XMvvmApp.Mvvm
             _bindings.Add(binding);
         }
 
-        public void Add<TBinding>(TBinding subscription)
-            where TBinding : class
+        public void AddAny<TSubscription>(TSubscription subscription)
+            where TSubscription : class
         {
-            Add(new Binding<TBinding>(subscription));
+            AddAny(new Binding<TSubscription>(subscription));
         }
 
         public void AddAll(IEnumerable<Binding> bindings)

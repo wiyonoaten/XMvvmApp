@@ -2,16 +2,16 @@
 {
     public class Binding
     {
-        private object _connection;
+        protected object Connection { get; private set; }
 
         public Binding(object connection)
         {
-            _connection = connection;
+            this.Connection = connection;
         }
 
-        public void Detach()
+        public virtual void Detach()
         {
-            _connection = null;
+            this.Connection = null;
         }
     }
 

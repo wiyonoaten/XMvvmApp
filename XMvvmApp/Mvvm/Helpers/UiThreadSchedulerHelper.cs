@@ -1,5 +1,6 @@
 using System;
 using XMvvmApp.Platform;
+using XMvvmApp.Utils;
 
 namespace XMvvmApp.Mvvm.Helpers
 {
@@ -30,10 +31,8 @@ namespace XMvvmApp.Mvvm.Helpers
             var weakAction = new WeakReference<Action<T>>(action);
             Action wrappedAction = () =>
             {
-                T strongSelf;
-                Action<T> strongAction;
-                weakSelf.TryGetTarget(out strongSelf);
-                weakAction.TryGetTarget(out strongAction);
+                T strongSelf = weakSelf.Get();
+                Action<T> strongAction = weakAction.Get();
 
                 if (strongSelf != null && strongAction != null)
                 {

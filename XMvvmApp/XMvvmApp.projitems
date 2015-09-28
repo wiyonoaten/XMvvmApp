@@ -20,5 +20,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ObservableList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Platform\IThreadScheduler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ExpressionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\WeakReferenceExtensions.cs" />
   </ItemGroup>
 </Project>

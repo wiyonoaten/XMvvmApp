@@ -31,12 +31,12 @@ namespace XMvvmApp.Mvvm
 
         public bool CanExecute(object parameter)
         {
-            return CanExecute((T)parameter);
+            return _canExecuteFunc == null ? true : _canExecuteFunc.Invoke((T)parameter);
         }
 
         public void Execute(object parameter)
         {
-            Execute((T)parameter);
+            _executeAction.Invoke((T)parameter);
         }
 
         #endregion
