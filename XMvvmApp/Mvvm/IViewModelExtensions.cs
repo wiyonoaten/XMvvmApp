@@ -10,15 +10,7 @@ namespace XMvvmApp.Mvvm
     {
         public static bool SetProperty<T>(this IViewModel vm, Expression<Func<T>> propertyExp, ref T field, T newValue)
         {
-            if (Equals(field, newValue))
-            {
-                return false;
-            }
-
-            _RaisePropertyChanging(vm, propertyExp.GetPropertyName());
-            field = newValue;
-            _RaisePropertyChanged(vm, propertyExp.GetPropertyName());
-            return true;
+            return _SetProperty(vm, ref field, newValue, propertyExp.GetPropertyName());
         }
 
         public static bool SetProperty<T>(this IViewModel vm, ref T field, T newValue, [CallerMemberName] string propertyName = null)
@@ -28,6 +20,11 @@ namespace XMvvmApp.Mvvm
                 throw new ArgumentNullException(propertyName);
             }
 
+            return _SetProperty(vm, ref field, newValue, propertyName);
+        }
+
+        private static bool _SetProperty<T>(IViewModel vm, ref T field, T newValue, string propertyName)
+        {
             if (Equals(field, newValue))
             {
                 return false;

@@ -2,6 +2,7 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using Java.IO;
+using System;
 using XMvvmApp.Mvvm;
 
 namespace XMvvmApp.Android.Mvvm.Views
@@ -12,10 +13,11 @@ namespace XMvvmApp.Android.Mvvm.Views
         private const string STATE_KEY_VIEW_MODEL = "viewModel";
 
         protected abstract TViewModel MakeViewModel();
-        protected abstract void OnBindViewsWithViewModel();
         protected abstract View OnSetupView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState, out bool retHasOptionsMenu);
-        protected abstract void OnBindMenuItemsWithViewModel();
-        protected abstract void OnSetupOptionsMenu(IMenu menu, MenuInflater inflater);
+        protected abstract void OnBindViewsWithViewModel();
+
+        protected virtual void OnSetupOptionsMenu(IMenu menu, MenuInflater inflater) { throw new NotImplementedException(); }
+        protected virtual void OnBindMenuItemsWithViewModel() { throw new NotImplementedException(); }
 
         protected TViewModel ViewModel { get; private set; }
         protected BindingCollection Bindings { get; private set; }

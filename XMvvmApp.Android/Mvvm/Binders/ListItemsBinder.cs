@@ -3,21 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using XMvvmApp.Mvvm;
+using XMvvmApp.Mvvm.Bindings;
 using XMvvmApp.Utils;
 
 namespace XMvvmApp.Android.Mvvm.Binders
 {
     public class ListItemsBinder<T> : IBinder
     {
-        protected readonly ObservableList<T> _list;
+        protected readonly IObservableReadOnlyList<T> _list;
 
         public BindingCollection Bindings { get; }
 
-        public ListItemsBinder(ObservableList<T> list)
+        public ListItemsBinder(IObservableReadOnlyList<T> list)
         {
             _list = list;
 
-            Bindings = new BindingCollection();
+            this.Bindings = new BindingCollection();
         }
 
         public ListItemsBinder<T> BindToArrayAdapter(ArrayAdapter<T> adapter)
@@ -28,7 +29,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
 
             var weakAdapter = new WeakReference<ArrayAdapter<T>>(adapter);
 
-            NotifyCollectionChangedEventHandler evHandler = (sender, args) =>
+            this.Bindings.Add(new ListCollectionChangedBinding<T>(_list, (sender, args) =>
             {
                 var adapter_ = weakAdapter.Get();
                 if (adapter_ == null)
@@ -75,32 +76,9 @@ namespace XMvvmApp.Android.Mvvm.Binders
                         adapter_.NotifyDataSetChanged();
                         break;
                 }
-            };
-            _list.CollectionChanged += evHandler;
-
-            Bindings.Add(new ListCollectionChangedBinding(_list, evHandler));
+			}));
 
             return this;
-        }
-
-        private class ListCollectionChangedBinding : Binding
-        {
-            private readonly ObservableList<T> _list;
-
-            public ListCollectionChangedBinding(ObservableList<T> list, NotifyCollectionChangedEventHandler evHandler)
-                : base(evHandler)
-            {
-                _list = list;
-
-                _list.CollectionChanged += evHandler;
-            }
-
-            public override void Detach()
-            {
-                base.Detach();
-
-                _list.CollectionChanged -= base.Connection as NotifyCollectionChangedEventHandler;
-            }
         }
     }
 }
