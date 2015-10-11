@@ -1,4 +1,6 @@
-﻿namespace XMvvmApp.Mvvm
+﻿using System.Reflection;
+
+namespace XMvvmApp.Mvvm
 {
     public static class IValueConverterExtensions
     {

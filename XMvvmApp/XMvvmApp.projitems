@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\ViewModelPropertyChangedBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\InvertedBoolValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\IntToBoolValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\StringFormatValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\TypeCastValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />

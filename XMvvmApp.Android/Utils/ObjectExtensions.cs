@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace XMvvmApp.Android
+﻿namespace XMvvmApp.Android
 {
-	public static class ObjectExtensions
+    public static class ObjectExtensions
 	{
 		public static Java.Lang.Object ToJavaObj<T>(this T value)
 		{
