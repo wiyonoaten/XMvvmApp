@@ -1,4 +1,4 @@
-﻿namespace XMvvmApp.Android
+﻿namespace XMvvmApp.Android.Utils
 {
     public static class ObjectExtensions
 	{

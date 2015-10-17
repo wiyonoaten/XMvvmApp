@@ -10,8 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BasicViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\EventRaiseBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\ListItemsBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyChangedEventRaiseBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyValueBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindingCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\EventHandlerBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\ListCollectionChangedBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\ViewModelPropertyChangedBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\InvertedBoolValueConverter.cs" />
@@ -32,6 +37,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ObservableReadOnlyList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Platform\IThreadScheduler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ExpressionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ObjectExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\WeakReferenceExtensions.cs" />
   </ItemGroup>
 </Project>

@@ -3,33 +3,28 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using XMvvmApp.Mvvm;
+using XMvvmApp.Mvvm.Binders;
 using XMvvmApp.Mvvm.Bindings;
 using XMvvmApp.Utils;
 
 namespace XMvvmApp.Android.Mvvm.Binders
 {
-    public class ListItemsBinder<T> : IBinder
+    public class AndroidListItemsBinder<T> : ListItemsBinder<T>
     {
-        protected readonly IObservableReadOnlyList<T> _list;
-
-        public BindingCollection Bindings { get; }
-
-        public ListItemsBinder(IObservableReadOnlyList<T> list)
+        public AndroidListItemsBinder(IObservableReadOnlyList<T> list)
+            : base(list)
         {
-            _list = list;
-
-            this.Bindings = new BindingCollection();
         }
 
-        public ListItemsBinder<T> BindToArrayAdapter(ArrayAdapter<T> adapter)
+        public AndroidListItemsBinder<T> BindToArrayAdapter(ArrayAdapter<T> adapter)
         {
             adapter.SetNotifyOnChange(false);
-            adapter.AddAll(new List<T>(_list.GetItems()));
+            adapter.AddAll(new List<T>(base.List.GetItems()));
             adapter.NotifyDataSetChanged();
 
             var weakAdapter = new WeakReference<ArrayAdapter<T>>(adapter);
 
-            this.Bindings.Add(new ListCollectionChangedBinding<T>(_list, (sender, args) =>
+            this.Bindings.Add(new ListCollectionChangedBinding<T>(base.List, (sender, args) =>
             {
                 var adapter_ = weakAdapter.Get();
                 if (adapter_ == null)
