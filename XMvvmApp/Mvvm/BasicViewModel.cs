@@ -1,14 +1,19 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
+using XMvvmApp.Mvvm.Helpers;
 
 namespace XMvvmApp.Mvvm
 {
     public abstract class BasicViewModel : IViewModel
     {
+        private readonly ViewModelStateHelper _viewModelStateHelper;
+
         protected BasicViewModel()
         {
             this.WakeupCommand = new DelegateCommand(DoWakeup);
             this.SleepCommand = new DelegateCommand(DoSleep);
+
+            _viewModelStateHelper = new ViewModelStateHelper(this);
         }
 
         #region Property Changed/Changing Events
@@ -28,17 +33,20 @@ namespace XMvvmApp.Mvvm
 
         #endregion
 
-        #region IViewModel Abstracts
-
-        public abstract object GetSavedState();
-        public abstract void RestoreSavedState(object state);
-
-        #endregion
-
         #region IViewModel Implementations
 
         public ICommand SleepCommand { get; }
         public ICommand WakeupCommand { get; }
+
+        public virtual object GetSavedState()
+        {
+            return _viewModelStateHelper.GetState();
+        }
+
+        public virtual void RestoreSavedState(object state)
+        {
+            _viewModelStateHelper.RestoreState(state);
+        }
 
         #endregion
 
