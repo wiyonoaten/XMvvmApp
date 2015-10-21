@@ -26,7 +26,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\UiThreadSchedulerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\ViewModelStateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IgnoredPropertyAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IObservableReadOnlyList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IObservableList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IValueConverter.cs" />

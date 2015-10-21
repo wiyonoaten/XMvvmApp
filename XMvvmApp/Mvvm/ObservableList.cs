@@ -10,6 +10,8 @@ namespace XMvvmApp.Mvvm
     // Note: not a thread-safe implementation.
     public class ObservableList<T> : ObservableCollection<T>, IObservableList<T>
     {
+        internal static string ResetToMethodName { get { return nameof(ResetTo); } }
+
         public ObservableList()
             : base()
         {

@@ -11,6 +11,16 @@ namespace XMvvmApp.Mvvm
         {
         }
 
+        public ObservableReadOnlyList(IEnumerable<T> collection)
+            : base(new ObservableCollection<T>(collection))
+        {
+        }
+
+        public ObservableReadOnlyList(List<T> list)
+            : base(new ObservableCollection<T>(list))
+        {
+        }
+
         public IReadOnlyList<T> GetItems()
         {
             return new List<T>(this.Items);

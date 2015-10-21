@@ -5,13 +5,10 @@ namespace XMvvmApp.Mvvm
 {
     public abstract class BasicViewModel : IViewModel
     {
-        private readonly DelegateCommand _wakeupCommand;
-        private readonly DelegateCommand _sleepCommand;
-
         protected BasicViewModel()
         {
-            _wakeupCommand = new DelegateCommand(DoWakeup);
-            _sleepCommand = new DelegateCommand(DoSleep);
+            this.WakeupCommand = new DelegateCommand(DoWakeup);
+            this.SleepCommand = new DelegateCommand(DoSleep);
         }
 
         #region Property Changed/Changing Events
@@ -40,9 +37,8 @@ namespace XMvvmApp.Mvvm
 
         #region IViewModel Implementations
 
-        public ICommand SleepCommand { get { return _sleepCommand; } }
-
-        public ICommand WakeupCommand { get { return _wakeupCommand; } }
+        public ICommand SleepCommand { get; }
+        public ICommand WakeupCommand { get; }
 
         #endregion
 

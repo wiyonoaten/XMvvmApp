@@ -73,7 +73,7 @@ namespace XMvvmApp.Android.Mvvm.Views
         {
             if (savedInstanceState != null)
             {
-                var vmSavedState = savedInstanceState.GetSerializable(STATE_KEY_VIEW_MODEL);
+                var vmSavedState = savedInstanceState.GetString(STATE_KEY_VIEW_MODEL);
                 if (vmSavedState != null)
                 {
                     this.ViewModel.RestoreSavedState(vmSavedState);
@@ -96,7 +96,7 @@ namespace XMvvmApp.Android.Mvvm.Views
         {
             base.OnSaveInstanceState(outState);
 
-            outState.PutSerializable(STATE_KEY_VIEW_MODEL, (ISerializable)this.ViewModel.GetSavedState());
+            outState.PutString(STATE_KEY_VIEW_MODEL, this.ViewModel.GetSavedState().ToString());
         }
     }
 }
