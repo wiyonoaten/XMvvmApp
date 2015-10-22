@@ -21,12 +21,12 @@ namespace XMvvmApp.Android.Mvvm.Binders
             view.Enabled = valueConverter.GetBoolValue(GetPropertyValue());
 
             var weakView = new WeakReference<View>(view);
-            this.Bindings.Add(new ViewModelPropertyChangedBinding(GetPropertyOwner(), (sender, args) =>
+            this.Bindings.Add(new PropertyChangedBinding<T>(GetPropertyOwner(), this.PropertyExp, (newValue) =>
             {
                 var view_ = weakView.Get();
                 if (view_ != null)
                 {
-                    view.Enabled = valueConverter.GetBoolValue(GetPropertyValue());
+                    view.Enabled = valueConverter.GetBoolValue(newValue);
                 }
             }));
             return this;
@@ -37,12 +37,12 @@ namespace XMvvmApp.Android.Mvvm.Binders
             view.Visibility = valueConverter.GetConvertedValue(GetPropertyValue());
 
             var weakView = new WeakReference<View>(view);
-            this.Bindings.Add(new ViewModelPropertyChangedBinding(GetPropertyOwner(), (sender, args) =>
+            this.Bindings.Add(new PropertyChangedBinding<T>(GetPropertyOwner(), this.PropertyExp, (newValue) =>
             {
                 var view_ = weakView.Get();
                 if (view_ != null)
                 {
-                    view.Visibility = valueConverter.GetConvertedValue(GetPropertyValue());
+                    view.Visibility = valueConverter.GetConvertedValue(newValue);
                 }
             }));
             return this;
@@ -53,12 +53,12 @@ namespace XMvvmApp.Android.Mvvm.Binders
             view.Alpha = valueConverter.GetConvertedValue(GetPropertyValue());
 
             var weakView = new WeakReference<View>(view);
-            this.Bindings.Add(new ViewModelPropertyChangedBinding(GetPropertyOwner(), (sender, args) =>
+            this.Bindings.Add(new PropertyChangedBinding<T>(GetPropertyOwner(), this.PropertyExp, (newValue) =>
             {
                 var view_ = weakView.Get();
                 if (view_ != null)
                 {
-                    view.Alpha = valueConverter.GetConvertedValue(GetPropertyValue());
+                    view.Alpha = valueConverter.GetConvertedValue(newValue);
                 }
             }));
             return this;
@@ -69,12 +69,12 @@ namespace XMvvmApp.Android.Mvvm.Binders
             textView.Text = valueConverter.GetStringValue(GetPropertyValue());
 
             var weakTextView = new WeakReference<TextView>(textView);
-            this.Bindings.Add(new ViewModelPropertyChangedBinding(GetPropertyOwner(), (sender, args) =>
+            this.Bindings.Add(new PropertyChangedBinding<T>(GetPropertyOwner(), this.PropertyExp, (newValue) =>
             {
                 var textView_ = weakTextView.Get();
                 if (textView_ != null)
                 {
-                    textView_.Text = valueConverter.GetStringValue(GetPropertyValue());
+                    textView_.Text = valueConverter.GetStringValue(newValue);
                 }
             }));
             return this;
@@ -85,12 +85,12 @@ namespace XMvvmApp.Android.Mvvm.Binders
             compoundButton.Checked = valueConverter.GetBoolValue(GetPropertyValue());
 
             var weakCompoundButton = new WeakReference<CompoundButton>(compoundButton);
-            this.Bindings.Add(new ViewModelPropertyChangedBinding(GetPropertyOwner(), (sender, args) =>
+            this.Bindings.Add(new PropertyChangedBinding<T>(GetPropertyOwner(), this.PropertyExp, (newValue) =>
             {
                 var compoundButton_ = weakCompoundButton.Get();
                 if (compoundButton_ != null)
                 {
-                    compoundButton_.Checked = valueConverter.GetBoolValue(GetPropertyValue());
+                    compoundButton_.Checked = valueConverter.GetBoolValue(newValue);
                 }
             }));
             return this;
@@ -101,12 +101,12 @@ namespace XMvvmApp.Android.Mvvm.Binders
             menuItem.SetEnabled(valueConverter.GetBoolValue(GetPropertyValue()));
 
             var weakCompoundButton = new WeakReference<IMenuItem>(menuItem);
-            this.Bindings.Add(new ViewModelPropertyChangedBinding(GetPropertyOwner(), (sender, args) =>
+            this.Bindings.Add(new PropertyChangedBinding<T>(GetPropertyOwner(), this.PropertyExp, (newValue) =>
             {
                 var menuItem_ = weakCompoundButton.Get();
                 if (menuItem_ != null)
                 {
-                    menuItem_.SetEnabled(valueConverter.GetBoolValue(GetPropertyValue()));
+                    menuItem_.SetEnabled(valueConverter.GetBoolValue(newValue));
                 }
             }));
             return this;

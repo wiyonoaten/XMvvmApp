@@ -19,12 +19,12 @@ namespace XMvvmApp.Android.Mvvm.Binders
         public AndroidListItemsBinder<T> BindToArrayAdapter(ArrayAdapter<T> adapter)
         {
             adapter.SetNotifyOnChange(false);
-            adapter.AddAll(new List<T>(base.List.GetItems()));
+            adapter.AddAll(new List<T>(this.List.GetItems()));
             adapter.NotifyDataSetChanged();
 
             var weakAdapter = new WeakReference<ArrayAdapter<T>>(adapter);
 
-            this.Bindings.Add(new ListCollectionChangedBinding<T>(base.List, (sender, args) =>
+            this.Bindings.Add(new ListCollectionChangedBinding<T>(this.List, (sender, args) =>
             {
                 var adapter_ = weakAdapter.Get();
                 if (adapter_ == null)

@@ -18,7 +18,7 @@ namespace XMvvmApp.Mvvm.Bindings
         {
             base.Detach();
 
-            _list.CollectionChanged -= base.Connection as NotifyCollectionChangedEventHandler;
+            _list.CollectionChanged -= this.Connection as NotifyCollectionChangedEventHandler;
         }
     }
 }

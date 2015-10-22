@@ -21,7 +21,7 @@ namespace XMvvmApp.Mvvm.Binders
         {
             base.Detach();
 
-            _removeDelegate(base.Connection as EventHandler<TEventArgs>);
+            _removeDelegate(this.Connection as EventHandler<TEventArgs>);
         }
     }
 }

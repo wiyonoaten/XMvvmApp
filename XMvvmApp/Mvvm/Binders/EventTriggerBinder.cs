@@ -4,7 +4,7 @@ using XMvvmApp.Utils;
 
 namespace XMvvmApp.Mvvm.Binders
 {
-    public class EventRaiseBinder<TEventArgs> : IBinder
+    public class EventTriggerBinder<TEventArgs> : IBinder
     {
         private readonly Action<EventHandler<TEventArgs>> _addDelegate;
         private readonly Action<EventHandler<TEventArgs>> _removeDelegate;
@@ -14,7 +14,7 @@ namespace XMvvmApp.Mvvm.Binders
         protected Action<EventHandler<TEventArgs>> AddDelegate { get { return _addDelegate; } }
         protected Action<EventHandler<TEventArgs>> RemoveDelegate { get { return _removeDelegate; } }
 
-        public EventRaiseBinder(Action<EventHandler<TEventArgs>> addDelegate, Action<EventHandler<TEventArgs>> removeDelegate)
+        public EventTriggerBinder(Action<EventHandler<TEventArgs>> addDelegate, Action<EventHandler<TEventArgs>> removeDelegate)
         {
             _addDelegate = addDelegate;
             _removeDelegate = removeDelegate;
@@ -22,7 +22,7 @@ namespace XMvvmApp.Mvvm.Binders
             this.Bindings = new BindingCollection();
         }
 
-        public EventRaiseBinder<TEventArgs> BindToTargetProperty<V>(Expression<Func<V>> targetPropExp, IValueConverter<TEventArgs, V> valueConverter)
+        public EventTriggerBinder<TEventArgs> BindToTargetProperty<V>(Expression<Func<V>> targetPropExp, IValueConverter<TEventArgs, V> valueConverter)
         {
             this.Bindings.Add(new EventHandlerBinding<TEventArgs>(_addDelegate, _removeDelegate, (sender, args) =>
             {

@@ -10,8 +10,8 @@ namespace XMvvmApp.Mvvm
 
         protected BasicViewModel()
         {
-            this.WakeupCommand = new DelegateCommand(DoWakeup);
-            this.SleepCommand = new DelegateCommand(DoSleep);
+            this._WakeupCommand = new DelegateCommand(DoWakeup);
+            this._SleepCommand = new DelegateCommand(DoSleep);
 
             _viewModelStateHelper = new ViewModelStateHelper(this);
         }
@@ -35,8 +35,11 @@ namespace XMvvmApp.Mvvm
 
         #region IViewModel Implementations
 
-        public ICommand SleepCommand { get; }
-        public ICommand WakeupCommand { get; }
+        protected DelegateCommand _SleepCommand { get; }
+        public ICommand SleepCommand { get { return this._SleepCommand; } }
+
+        protected DelegateCommand _WakeupCommand { get; }
+        public ICommand WakeupCommand { get { return this._WakeupCommand; } }
 
         public virtual object GetSavedState()
         {

@@ -3,14 +3,14 @@ using System.ComponentModel;
 
 namespace XMvvmApp.Mvvm.Binders
 {
-    public class PropertyChangedEventRaiseBinder : EventRaiseBinder<PropertyChangedEventArgs>
+    public class PropertyChangedEventTriggerBinder : EventTriggerBinder<PropertyChangedEventArgs>
     {
-        public static PropertyChangedEventRaiseBinder Create(Action<PropertyChangedEventHandler> addDelegate, Action<PropertyChangedEventHandler> removeDelegate)
+        public static PropertyChangedEventTriggerBinder Create(Action<PropertyChangedEventHandler> addDelegate, Action<PropertyChangedEventHandler> removeDelegate)
         {
-            return new PropertyChangedEventRaiseBinder(new PropertyChangedEventHandlerAdapter(addDelegate, removeDelegate));
+            return new PropertyChangedEventTriggerBinder(new PropertyChangedEventHandlerAdapter(addDelegate, removeDelegate));
         }
 
-        private PropertyChangedEventRaiseBinder(PropertyChangedEventHandlerAdapter adapter)
+        private PropertyChangedEventTriggerBinder(PropertyChangedEventHandlerAdapter adapter)
             : base(_ => adapter.PropertyChanged += _, _ => adapter.PropertyChanged -= _)
         {
         }

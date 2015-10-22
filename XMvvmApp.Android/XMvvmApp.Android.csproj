@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mvvm\Binders\AndroidPropertyValueBinder.cs" />
-    <Compile Include="Mvvm\Binders\AndroidEventRaiseBinder.cs" />
+    <Compile Include="Mvvm\Binders\AndroidEventTriggerBinder.cs" />
     <Compile Include="Mvvm\Converters\BoolToInvisibilityValueConverter.cs" />
     <Compile Include="Mvvm\Converters\BoolToVisibilityValueConverter.cs" />
     <Compile Include="Mvvm\Views\BaseViewModelFragment.cs" />
