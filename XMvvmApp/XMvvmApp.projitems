@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BasicViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandCanExecuteBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\EventTriggerBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\ListItemsBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyChangedEventTriggerBinder.cs" />

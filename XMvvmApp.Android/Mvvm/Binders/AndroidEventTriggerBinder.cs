@@ -3,6 +3,7 @@ using Android.Content;
 using System;
 using XMvvmApp.Mvvm;
 using XMvvmApp.Mvvm.Binders;
+using XMvvmApp.Mvvm.Bindings;
 using XMvvmApp.Utils;
 
 namespace XMvvmApp.Android.Mvvm.Binders

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using XMvvmApp.Mvvm.Bindings;
 using XMvvmApp.Utils;
 
 namespace XMvvmApp.Mvvm.Binders
