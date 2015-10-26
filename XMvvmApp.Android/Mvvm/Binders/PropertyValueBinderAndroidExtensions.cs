@@ -1,3 +1,4 @@
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 using System;
@@ -10,6 +11,8 @@ namespace XMvvmApp.Android.Mvvm.Binders
 {
     public static class PropertyValueBinderAndroidExtensions
     {
+        #region To Views
+
         public static PropertyValueBinder<T> BindToViewEnabled<T>(this PropertyValueBinder<T> binder,
             View view, IValueConverter<T, bool> valueConverter)
         {
@@ -100,10 +103,10 @@ namespace XMvvmApp.Android.Mvvm.Binders
         {
             menuItem.SetEnabled(valueConverter.GetBoolValue(binder.PropertyValue));
 
-            var weakCompoundButton = new WeakReference<IMenuItem>(menuItem);
+            var weakMenuItem = new WeakReference<IMenuItem>(menuItem);
             binder.Bindings.Add(new PropertyChangedBinding<T>(binder.PropertyOwner, binder.PropertyExp, (newValue) =>
             {
-                var menuItem_ = weakCompoundButton.Get();
+                var menuItem_ = weakMenuItem.Get();
                 if (menuItem_ != null)
                 {
                     menuItem_.SetEnabled(valueConverter.GetBoolValue(newValue));
@@ -111,5 +114,45 @@ namespace XMvvmApp.Android.Mvvm.Binders
             }));
             return binder;
         }
+
+        #endregion
+
+        #region From Views
+
+        public static PropertyValueBinder<T> BindFromTextViewText<T>(this PropertyValueBinder<T> binder,
+            TextView textView, IValueConverter<T, string> valueConverter)
+        {
+            binder.PropertyExp.SetPropertyValue(valueConverter.FromStringValue(textView.Text));
+
+            var weakTextView = new WeakReference<TextView>(textView);
+            binder.Bindings.Add(new EventHandlerBinding<AfterTextChangedEventArgs>(_ => textView.AfterTextChanged += _, _ => textView.AfterTextChanged -= _, (sender, args) =>
+            {
+                var textView_ = weakTextView.Get();
+                if (textView_ != null)
+                {
+                    binder.PropertyExp.SetPropertyValue(valueConverter.FromStringValue(textView_.Text));
+                }
+            }));
+            return binder;
+        }
+
+        public static PropertyValueBinder<T> BindFromCompoundButtonChecked<T>(this PropertyValueBinder<T> binder,
+            CompoundButton compoundButton, IValueConverter<T, bool> valueConverter)
+        {
+            binder.PropertyExp.SetPropertyValue(valueConverter.FromBoolValue(compoundButton.Checked));
+
+            var weakCompoundButton = new WeakReference<CompoundButton>(compoundButton);
+            binder.Bindings.Add(new EventHandlerBinding<CompoundButton.CheckedChangeEventArgs>(_ => compoundButton.CheckedChange += _, _ => compoundButton.CheckedChange -= _, (sender, args) =>
+            {
+                var compoundButton_ = weakCompoundButton.Get();
+                if (compoundButton_ != null)
+                {
+                    binder.PropertyExp.SetPropertyValue(valueConverter.FromBoolValue(compoundButton_.Checked));
+                }
+            }));
+            return binder;
+        }
+
+        #endregion
     }
 }
