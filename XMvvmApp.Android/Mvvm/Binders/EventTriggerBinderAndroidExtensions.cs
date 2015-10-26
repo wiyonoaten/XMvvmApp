@@ -8,17 +8,13 @@ using XMvvmApp.Utils;
 
 namespace XMvvmApp.Android.Mvvm.Binders
 {
-    public class AndroidEventTriggerBinder<TEventArgs> : EventTriggerBinder<TEventArgs>
+    public static class EventTriggerBinderAndroidExtensions
     {
-        public AndroidEventTriggerBinder(Action<EventHandler<TEventArgs>> addDelegate, Action<EventHandler<TEventArgs>> removeDelegate)
-            : base(addDelegate, removeDelegate)
-        {
-        }
-
-        public AndroidEventTriggerBinder<TEventArgs> BindToAlertDialogMessage(Context context, string title, IValueConverter<TEventArgs, string> valueConverter)
+        public static EventTriggerBinder<T> BindToAlertDialogMessage<T>(this EventTriggerBinder<T> binder,
+            Context context, string title, IValueConverter<T, string> valueConverter)
         {
             var weakContext = new WeakReference<Context>(context);
-            this.Bindings.Add(new EventHandlerBinding<TEventArgs>(this.AddDelegate, this.RemoveDelegate, (sender, args) =>
+            binder.Bindings.Add(new EventHandlerBinding<T>(binder.AddDelegate, binder.RemoveDelegate, (sender, args) =>
             {
                 var context_ = weakContext.Get();
                 if (context_ != null)
@@ -31,7 +27,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
                         .Show();
                 }
             }));
-            return this;
+            return binder;
         }
     }
 }

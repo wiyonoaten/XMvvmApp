@@ -2,29 +2,23 @@ using Android.Widget;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using XMvvmApp.Mvvm;
 using XMvvmApp.Mvvm.Binders;
 using XMvvmApp.Mvvm.Bindings;
 using XMvvmApp.Utils;
 
 namespace XMvvmApp.Android.Mvvm.Binders
 {
-    public class AndroidListItemsBinder<T> : ListItemsBinder<T>
+    public static class ListItemsBinderAndroidExtensions
     {
-        public AndroidListItemsBinder(IObservableReadOnlyList<T> list)
-            : base(list)
-        {
-        }
-
-        public AndroidListItemsBinder<T> BindToArrayAdapter(ArrayAdapter<T> adapter)
+        public static ListItemsBinder<T> BindToArrayAdapter<T>(this ListItemsBinder<T> binder,
+            ArrayAdapter<T> adapter)
         {
             adapter.SetNotifyOnChange(false);
-            adapter.AddAll(new List<T>(this.List.GetItems()));
+            adapter.AddAll(new List<T>(binder.List.GetItems()));
             adapter.NotifyDataSetChanged();
 
             var weakAdapter = new WeakReference<ArrayAdapter<T>>(adapter);
-
-            this.Bindings.Add(new ListCollectionChangedBinding<T>(this.List, (sender, args) =>
+            binder.Bindings.Add(new ListCollectionChangedBinding<T>(binder.List, (sender, args) =>
             {
                 var adapter_ = weakAdapter.Get();
                 if (adapter_ == null)
@@ -72,8 +66,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
                         break;
                 }
 			}));
-
-            return this;
+            return binder;
         }
     }
 }

@@ -10,10 +10,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BasicViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandCanExecuteBinderCoreExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandCanExecuteBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\EventTriggerBinderCoreExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\EventTriggerBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\ListItemsBinderCoreExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\ListItemsBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyChangedEventTriggerBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyValueBinderCoreExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyValueBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindingCollection.cs" />

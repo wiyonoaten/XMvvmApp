@@ -1,13 +1,13 @@
 using System;
+using System.ComponentModel;
 using System.Linq.Expressions;
-using XMvvmApp.Mvvm.Bindings;
 using XMvvmApp.Utils;
 
 namespace XMvvmApp.Mvvm.Binders
 {
     public class PropertyValueBinder<T> : IBinder
     {
-        protected Expression<Func<T>> PropertyExp { get; }
+        public Expression<Func<T>> PropertyExp { get; }
         
         public BindingCollection Bindings { get; }
 
@@ -18,26 +18,14 @@ namespace XMvvmApp.Mvvm.Binders
             this.Bindings = new BindingCollection();
         }
 
-        protected IViewModel GetPropertyOwner()
+        public INotifyPropertyChanged PropertyOwner
         {
-            return this.PropertyExp.GetPropertyOwner<T, IViewModel>();
+            get { return this.PropertyExp.GetPropertyOwner<T, INotifyPropertyChanged>(); }
         }
 
-        protected T GetPropertyValue()
+        public T PropertyValue
         {
-            return this.PropertyExp.GetPropertyValue();
-        }
-
-        public PropertyValueBinder<T> BindToTargetProperty<V>(Expression<Func<V>> targetPropExp, IValueConverter<T, V> valueConverter)
-        {
-            targetPropExp.SetPropertyValue(valueConverter.GetConvertedValue(GetPropertyValue()));
-
-            this.Bindings.Add(new PropertyChangedBinding<T>(GetPropertyOwner(), this.PropertyExp, (newValue) =>
-            {
-                // TODO: does / what if property expression hold strong ref to the property owner object??
-                targetPropExp.SetPropertyValue(valueConverter.GetConvertedValue(newValue));
-            }));
-            return this;
+            get { return this.PropertyExp.GetPropertyValue(); }
         }
     }
 }

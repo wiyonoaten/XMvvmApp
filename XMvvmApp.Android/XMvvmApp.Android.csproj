@@ -50,8 +50,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mvvm\Binders\AndroidPropertyValueBinder.cs" />
-    <Compile Include="Mvvm\Binders\AndroidEventTriggerBinder.cs" />
+    <Compile Include="Mvvm\Binders\PropertyValueBinderAndroidExtensions.cs" />
+    <Compile Include="Mvvm\Binders\EventTriggerBinderAndroidExtensions.cs" />
     <Compile Include="Mvvm\Converters\BoolToInvisibilityValueConverter.cs" />
     <Compile Include="Mvvm\Converters\BoolToVisibilityValueConverter.cs" />
     <Compile Include="Mvvm\Views\BaseViewModelFragment.cs" />
@@ -74,7 +74,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mvvm\Binders\AndroidListItemsBinder.cs" />
+    <Compile Include="Mvvm\Binders\ListItemsBinderAndroidExtensions.cs" />
   </ItemGroup>
   <Import Project="..\XMvvmApp\XMvvmApp.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
