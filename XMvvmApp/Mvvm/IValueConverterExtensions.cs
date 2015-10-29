@@ -8,6 +8,10 @@ namespace XMvvmApp.Mvvm
         {
             if (valueConverter == null)
             {
+                if (typeof(V).IsAssignableFrom(typeof(T)))
+                {
+                    return (V)(object)value; // upcast
+                }
                 return default(V);
             }
             return valueConverter.Convert(value);
@@ -17,6 +21,10 @@ namespace XMvvmApp.Mvvm
         {
             if (valueConverter == null)
             {
+                if (typeof(V).IsAssignableFrom(typeof(T)))
+                {
+                    return (T)(object)convertedValue; // downcast
+                }
                 return default(T);
             }
             return valueConverter.ConvertBack(convertedValue);
@@ -33,14 +41,6 @@ namespace XMvvmApp.Mvvm
 
         public static T FromStringValue<T>(this IValueConverter<T, string> valueConverter, string stringValue)
         {
-            if (stringValue != null && valueConverter == null)
-            {
-                if (typeof(string).IsAssignableFrom(typeof(T)))
-                {
-                    return (T)(object)stringValue;
-                }
-                return default(T);
-            }
             return valueConverter.FromConvertedValue(stringValue);
         }
 
@@ -48,25 +48,16 @@ namespace XMvvmApp.Mvvm
         {
             if (value != null && valueConverter == null)
             {
-                if (typeof(bool).IsAssignableFrom(typeof(T)))
+                if (false == typeof(bool).IsAssignableFrom(typeof(T)))
                 {
-                    return (bool)(object)value;
+                    return true;
                 }
-                return true;
             }
             return valueConverter.GetConvertedValue(value);
         }
 
         public static T FromBoolValue<T>(this IValueConverter<T, bool> valueConverter, bool booleanValue)
         {
-            if (valueConverter == null)
-            {
-                if (typeof(bool).IsAssignableFrom(typeof(T)))
-                {
-                    return (T)(object)booleanValue;
-                }
-                return default(T);
-            }
             return valueConverter.FromConvertedValue(booleanValue);
         }
 
