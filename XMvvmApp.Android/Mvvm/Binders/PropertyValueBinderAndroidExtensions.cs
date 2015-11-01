@@ -14,7 +14,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         #region To Views
 
         public static PropertyValueBinder<T> BindToViewEnabled<T>(this PropertyValueBinder<T> binder,
-            View view, IValueConverter<T, bool> valueConverter)
+            View view, IValueConverter<T, bool> valueConverter = null)
         {
             view.Enabled = valueConverter.GetBoolValue(binder.PropertyValue);
 
@@ -31,7 +31,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         }
 
         public static PropertyValueBinder<T> BindToViewVisibility<T>(this PropertyValueBinder<T> binder, 
-            View view, IValueConverter<T, ViewStates> valueConverter)
+            View view, IValueConverter<T, ViewStates> valueConverter = null)
         {
             view.Visibility = valueConverter.GetTargetValue(binder.PropertyValue);
 
@@ -48,7 +48,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         }
 
         public static PropertyValueBinder<T> BindToViewAlpha<T>(this PropertyValueBinder<T> binder, 
-            View view, IValueConverter<T, float> valueConverter)
+            View view, IValueConverter<T, float> valueConverter = null)
         {
             view.Alpha = valueConverter.GetTargetValue(binder.PropertyValue);
 
@@ -82,7 +82,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         }
 
         public static PropertyValueBinder<T> BindToCompoundButtonChecked<T>(this PropertyValueBinder<T> binder, 
-            CompoundButton compoundButton, IValueConverter<T, bool> valueConverter)
+            CompoundButton compoundButton, IValueConverter<T, bool> valueConverter = null)
         {
             compoundButton.Checked = valueConverter.GetBoolValue(binder.PropertyValue);
 
@@ -99,7 +99,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         }
 
         public static PropertyValueBinder<T> BindToMenuItemEnabled<T>(this PropertyValueBinder<T> binder, 
-            IMenuItem menuItem, IValueConverter<T, bool> valueConverter)
+            IMenuItem menuItem, IValueConverter<T, bool> valueConverter = null)
         {
             menuItem.SetEnabled(valueConverter.GetBoolValue(binder.PropertyValue));
 
@@ -120,7 +120,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         #region From Views
 
         public static PropertyValueBinder<T> BindFromTextViewText<T>(this PropertyValueBinder<T> binder,
-            TextView textView, IValueConverter<T, string> valueConverter)
+            TextView textView, IValueConverter<T, string> valueConverter = null)
         {
             binder.PropertyExp.SetPropertyValue(valueConverter.FromStringValue(textView.Text));
 
@@ -137,7 +137,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         }
 
         public static PropertyValueBinder<T> BindFromCompoundButtonChecked<T>(this PropertyValueBinder<T> binder,
-            CompoundButton compoundButton, IValueConverter<T, bool> valueConverter)
+            CompoundButton compoundButton, IValueConverter<T, bool> valueConverter = null)
         {
             binder.PropertyExp.SetPropertyValue(valueConverter.FromBoolValue(compoundButton.Checked));
 

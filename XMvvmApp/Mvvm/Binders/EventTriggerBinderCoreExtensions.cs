@@ -8,7 +8,7 @@ namespace XMvvmApp.Mvvm.Binders
     public static class EventTriggerBinderCoreExtensions
     {
         public static EventTriggerBinder<T> BindToProperty<T, V>(this EventTriggerBinder<T> binder,
-            Expression<Func<V>> targetPropExp, IValueConverter<T, V> valueConverter)
+            Expression<Func<V>> targetPropExp, IValueConverter<T, V> valueConverter = null)
         {
             binder.Bindings.Add(new EventHandlerBinding<T>(binder.AddDelegate, binder.RemoveDelegate, (sender, args) =>
             {

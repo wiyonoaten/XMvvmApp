@@ -50,10 +50,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mvvm\Binders\CommandExecuteBinderAndroidExtensions.cs" />
     <Compile Include="Mvvm\Binders\PropertyValueBinderAndroidExtensions.cs" />
     <Compile Include="Mvvm\Binders\EventTriggerBinderAndroidExtensions.cs" />
     <Compile Include="Mvvm\Converters\BoolToInvisibilityValueConverter.cs" />
     <Compile Include="Mvvm\Converters\BoolToVisibilityValueConverter.cs" />
+    <Compile Include="EventListeners\DelegateMenuItemOnMenuItemClickListener.cs" />
     <Compile Include="Mvvm\Views\BaseViewModelFragment.cs" />
     <Compile Include="Platform\HandlerThreadScheduler.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

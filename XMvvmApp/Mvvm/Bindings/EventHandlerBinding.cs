@@ -2,49 +2,25 @@
 
 namespace XMvvmApp.Mvvm.Bindings
 {
-    public class EventHandlerBinding : Binding
+    public class EventHandlerBinding : DelegateBinding<EventHandler>
     {
-        private readonly Action<EventHandler> _removeDelegate;
-
         public EventHandlerBinding(
             Action<EventHandler> addDelegate,
             Action<EventHandler> removeDelegate,
             EventHandler evHandler)
-            : base(evHandler)
+            : base(addDelegate, removeDelegate, evHandler)
         {
-            _removeDelegate = removeDelegate;
-
-            addDelegate(evHandler);
-        }
-
-        public override void Detach()
-        {
-            base.Detach();
-
-            _removeDelegate(this.Connection as EventHandler);
         }
     }
 
-    public class EventHandlerBinding<TEventArgs> : Binding
+    public class EventHandlerBinding<TEventArgs> : DelegateBinding<EventHandler<TEventArgs>>
     {
-        private readonly Action<EventHandler<TEventArgs>> _removeDelegate;
-
         public EventHandlerBinding(
             Action<EventHandler<TEventArgs>> addDelegate, 
             Action<EventHandler<TEventArgs>> removeDelegate,
             EventHandler<TEventArgs> evHandler)
-            : base(evHandler)
+            : base(addDelegate, removeDelegate, evHandler)
         {
-            _removeDelegate = removeDelegate;
-
-            addDelegate(evHandler);
-        }
-
-        public override void Detach()
-        {
-            base.Detach();
-
-            _removeDelegate(this.Connection as EventHandler<TEventArgs>);
         }
     }
 }

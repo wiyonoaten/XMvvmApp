@@ -9,7 +9,7 @@ namespace XMvvmApp.Mvvm.Binders
     public static class PropertyValueBinderCoreExtensions
     {
         public static PropertyValueBinder<T> BindToProperty<T, V>(this PropertyValueBinder<T> binder, 
-            Expression<Func<V>> targetPropExp, IValueConverter<T, V> valueConverter)
+            Expression<Func<V>> targetPropExp, IValueConverter<T, V> valueConverter = null)
         {
             targetPropExp.SetPropertyValue(valueConverter.GetTargetValue(binder.PropertyValue));
 
@@ -22,7 +22,7 @@ namespace XMvvmApp.Mvvm.Binders
         }
 
         public static PropertyValueBinder<T> BindFromInpcProperty<T, V>(this PropertyValueBinder<T> binder, 
-            Expression<Func<V>> sourcePropExp, IValueConverter<V, T> valueConverter)
+            Expression<Func<V>> sourcePropExp, IValueConverter<V, T> valueConverter = null)
         {
             binder.PropertyExp.SetPropertyValue(valueConverter.GetTargetValue(sourcePropExp.GetPropertyValue()));
 

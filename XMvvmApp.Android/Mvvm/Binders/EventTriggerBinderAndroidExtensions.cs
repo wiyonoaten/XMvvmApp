@@ -11,7 +11,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
     public static class EventTriggerBinderAndroidExtensions
     {
         public static EventTriggerBinder<T> BindToAlertDialogMessage<T>(this EventTriggerBinder<T> binder,
-            Context context, string title, IValueConverter<T, string> valueConverter)
+            Context context, string title, IValueConverter<T, string> valueConverter = null)
         {
             var weakContext = new WeakReference<Context>(context);
             binder.Bindings.Add(new EventHandlerBinding<T>(binder.AddDelegate, binder.RemoveDelegate, (sender, args) =>

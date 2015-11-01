@@ -10,8 +10,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BasicViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandExecuteBinderCoreExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandCanExecuteBinderCoreExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandCanExecuteBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandExecuteBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\EventTriggerBinderCoreExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\EventTriggerBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\ListItemsBinderCoreExtensions.cs" />
@@ -21,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyValueBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindingCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\DelegateBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\EventHandlerBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\ListCollectionChangedBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\PropertyChangedBinding.cs" />

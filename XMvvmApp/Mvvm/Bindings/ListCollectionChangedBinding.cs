@@ -16,9 +16,9 @@ namespace XMvvmApp.Mvvm.Bindings
 
         public override void Detach()
         {
-            base.Detach();
-
             _list.CollectionChanged -= this.Connection as NotifyCollectionChangedEventHandler;
+
+            base.Detach();
         }
     }
 }

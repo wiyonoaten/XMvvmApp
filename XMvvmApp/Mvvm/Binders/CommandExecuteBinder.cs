@@ -3,14 +3,14 @@ using System.Windows.Input;
 
 namespace XMvvmApp.Mvvm.Binders
 {
-    public class CommandCanExecuteBinder<T> : IBinder
+    public class CommandExecuteBinder<T> : IBinder
     {
         public ICommand Command { get; }
         public Func<T> ParamDelegate { get; }
 
         public BindingCollection Bindings { get; }
 
-        public CommandCanExecuteBinder(ICommand command)
+        public CommandExecuteBinder(ICommand command)
         {
             this.Command = command;
             this.ParamDelegate = null;
@@ -18,7 +18,7 @@ namespace XMvvmApp.Mvvm.Binders
             this.Bindings = new BindingCollection();
         }
 
-        public CommandCanExecuteBinder(ICommand command, Func<T> paramDelegate)
+        public CommandExecuteBinder(ICommand command, Func<T> paramDelegate)
         {
             this.Command = command;
             this.ParamDelegate = paramDelegate;
@@ -27,14 +27,14 @@ namespace XMvvmApp.Mvvm.Binders
         }
     }
 
-    public class CommandCanExecuteBinder : CommandCanExecuteBinder<object>
+    public class CommandExecuteBinder : CommandExecuteBinder<object>
     {
-        public CommandCanExecuteBinder(ICommand command)
+        public CommandExecuteBinder(ICommand command)
             : base(command)
         {
         }
 
-        public CommandCanExecuteBinder(ICommand command, Func<object> paramDelegate)
+        public CommandExecuteBinder(ICommand command, Func<object> paramDelegate)
             : base(command, () => paramDelegate.Invoke())
         {
         }

@@ -31,9 +31,9 @@ namespace XMvvmApp.Mvvm.Bindings
 
         public override void Detach()
         {
-            base.Detach();
-
             _inpc.PropertyChanged -= _PropertyChanged;
+
+            base.Detach();
         }
 
         private void _PropertyChanged(object sender, PropertyChangedEventArgs e)

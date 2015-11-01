@@ -18,6 +18,8 @@
     public class Binding<T> : Binding
         where T : class
     {
+        protected new T Connection { get { return base.Connection as T; } }
+
         public Binding(T connection)
             : base(connection)
         {
