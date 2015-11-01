@@ -21,9 +21,9 @@ namespace XMvvmApp.Mvvm
         {
             if (valueConverter == null)
             {
-                if (typeof(V).IsAssignableFrom(typeof(T)))
+                if (typeof(T).IsAssignableFrom(typeof(V)))
                 {
-                    return (T)(object)convertedValue; // downcast
+                    return (T)(object)convertedValue; // upcast
                 }
                 return default(T);
             }
