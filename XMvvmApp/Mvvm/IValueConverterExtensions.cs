@@ -4,68 +4,68 @@ namespace XMvvmApp.Mvvm
 {
     public static class IValueConverterExtensions
     {
-        public static V GetConvertedValue<T, V>(this IValueConverter<T, V> valueConverter, T value)
+        public static T GetTargetValue<S, T>(this IValueConverter<S, T> vc, S sourceVal)
         {
-            if (valueConverter == null)
+            if (vc == null)
             {
-                if (typeof(V).IsAssignableFrom(typeof(T)))
+                if (typeof(T).IsAssignableFrom(typeof(S)))
                 {
-                    return (V)(object)value; // upcast
-                }
-                return default(V);
-            }
-            return valueConverter.Convert(value);
-        }
-
-        public static T FromConvertedValue<T, V>(this IValueConverter<T, V> valueConverter, V convertedValue)
-        {
-            if (valueConverter == null)
-            {
-                if (typeof(T).IsAssignableFrom(typeof(V)))
-                {
-                    return (T)(object)convertedValue; // upcast
+                    return (T)(object)sourceVal; // upcast
                 }
                 return default(T);
             }
-            return valueConverter.ConvertBack(convertedValue);
+            return vc.Convert(sourceVal);
         }
 
-        public static string GetStringValue<T>(this IValueConverter<T, string> valueConverter, T value)
+        public static S FromTargetValue<S, T>(this IValueConverter<S, T> vc, T targetVal)
         {
-            if (value != null && valueConverter == null)
+            if (vc == null)
             {
-                return value.ToString();
+                if (typeof(S).IsAssignableFrom(typeof(T)))
+                {
+                    return (S)(object)targetVal; // upcast
+                }
+                return default(S);
             }
-            return valueConverter.GetConvertedValue(value);
+            return vc.ConvertBack(targetVal);
         }
 
-        public static T FromStringValue<T>(this IValueConverter<T, string> valueConverter, string stringValue)
+        public static string GetStringValue<S>(this IValueConverter<S, string> vc, S sourceVal)
         {
-            return valueConverter.FromConvertedValue(stringValue);
-        }
-
-        public static bool GetBoolValue<T>(this IValueConverter<T, bool> valueConverter, T value)
-        {
-            if (value != null && valueConverter == null)
+            if (sourceVal != null && vc == null)
             {
-                if (false == typeof(bool).IsAssignableFrom(typeof(T)))
+                return sourceVal.ToString();
+            }
+            return vc.GetTargetValue(sourceVal);
+        }
+
+        public static S FromStringValue<S>(this IValueConverter<S, string> vc, string stringVal)
+        {
+            return vc.FromTargetValue(stringVal);
+        }
+
+        public static bool GetBoolValue<S>(this IValueConverter<S, bool> vc, S sourceVal)
+        {
+            if (sourceVal != null && vc == null)
+            {
+                if (false == typeof(bool).IsAssignableFrom(typeof(S)))
                 {
                     return true;
                 }
             }
-            return valueConverter.GetConvertedValue(value);
+            return vc.GetTargetValue(sourceVal);
         }
 
-        public static T FromBoolValue<T>(this IValueConverter<T, bool> valueConverter, bool booleanValue)
+        public static S FromBoolValue<S>(this IValueConverter<S, bool> vc, bool boolVal)
         {
-            return valueConverter.FromConvertedValue(booleanValue);
+            return vc.FromTargetValue(boolVal);
         }
 
-        public static IValueConverter<T1, V> ChainWith<T1, T2, V>(this IValueConverter<T1, T2> valueConverter, IValueConverter<T2, V> anotherValueConverter)
+        public static IValueConverter<S1, T> ChainWith<S1, S2, T>(this IValueConverter<S1, S2> vc, IValueConverter<S2, T> anotherVc)
         {
-            return new DelegateValueConverter<T1, V>(
-                (t1Val) => anotherValueConverter.Convert(valueConverter.Convert(t1Val)),
-                (vVal) => valueConverter.ConvertBack(anotherValueConverter.ConvertBack(vVal)));
+            return new DelegateValueConverter<S1, T>(
+                (source1Val) => anotherVc.Convert(vc.Convert(source1Val)),
+                (targetVal) => vc.ConvertBack(anotherVc.ConvertBack(targetVal)));
         }
     }
 }

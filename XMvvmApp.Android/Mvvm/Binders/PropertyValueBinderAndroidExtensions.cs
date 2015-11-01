@@ -33,7 +33,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         public static PropertyValueBinder<T> BindToViewVisibility<T>(this PropertyValueBinder<T> binder, 
             View view, IValueConverter<T, ViewStates> valueConverter)
         {
-            view.Visibility = valueConverter.GetConvertedValue(binder.PropertyValue);
+            view.Visibility = valueConverter.GetTargetValue(binder.PropertyValue);
 
             var weakView = new WeakReference<View>(view);
             binder.Bindings.Add(new PropertyChangedBinding<T>(binder.PropertyOwner, binder.PropertyExp, (newValue) =>
@@ -41,7 +41,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
                 var view_ = weakView.Get();
                 if (view_ != null)
                 {
-                    view.Visibility = valueConverter.GetConvertedValue(newValue);
+                    view.Visibility = valueConverter.GetTargetValue(newValue);
                 }
             }));
             return binder;
@@ -50,7 +50,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
         public static PropertyValueBinder<T> BindToViewAlpha<T>(this PropertyValueBinder<T> binder, 
             View view, IValueConverter<T, float> valueConverter)
         {
-            view.Alpha = valueConverter.GetConvertedValue(binder.PropertyValue);
+            view.Alpha = valueConverter.GetTargetValue(binder.PropertyValue);
 
             var weakView = new WeakReference<View>(view);
             binder.Bindings.Add(new PropertyChangedBinding<T>(binder.PropertyOwner, binder.PropertyExp, (newValue) =>
@@ -58,7 +58,7 @@ namespace XMvvmApp.Android.Mvvm.Binders
                 var view_ = weakView.Get();
                 if (view_ != null)
                 {
-                    view.Alpha = valueConverter.GetConvertedValue(newValue);
+                    view.Alpha = valueConverter.GetTargetValue(newValue);
                 }
             }));
             return binder;

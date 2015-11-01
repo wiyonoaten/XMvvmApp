@@ -10,12 +10,12 @@ namespace XMvvmApp.Mvvm.Binders
         public static CommandCanExecuteBinder BindToProperty<V>(this CommandCanExecuteBinder binder,
             Expression<Func<V>> targetPropExp, IValueConverter<bool, V> valueConverter)
         {
-            targetPropExp.SetPropertyValue(valueConverter.GetConvertedValue(binder.Command.CanExecute(binder.ParamDelegate?.Invoke())));
+            targetPropExp.SetPropertyValue(valueConverter.GetTargetValue(binder.Command.CanExecute(binder.ParamDelegate?.Invoke())));
 
             binder.Bindings.Add(new EventHandlerBinding(h => binder.Command.CanExecuteChanged += h, h => binder.Command.CanExecuteChanged -= h, (sender, args) =>
             {
                 // TODO: does / what if property expression hold strong ref to the property owner object??
-                targetPropExp.SetPropertyValue(valueConverter.GetConvertedValue(binder.Command.CanExecute(binder.ParamDelegate?.Invoke())));
+                targetPropExp.SetPropertyValue(valueConverter.GetTargetValue(binder.Command.CanExecute(binder.ParamDelegate?.Invoke())));
             }));
             return binder;
         }

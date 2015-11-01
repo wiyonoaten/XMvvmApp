@@ -13,7 +13,7 @@ namespace XMvvmApp.Mvvm.Binders
             binder.Bindings.Add(new EventHandlerBinding<T>(binder.AddDelegate, binder.RemoveDelegate, (sender, args) =>
             {
                 // TODO: does / what if property expression hold strong ref to the property owner object??
-                targetPropExp.SetPropertyValue(valueConverter.GetConvertedValue(args));
+                targetPropExp.SetPropertyValue(valueConverter.GetTargetValue(args));
             }));
             return binder;
         }
