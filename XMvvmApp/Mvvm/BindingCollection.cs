@@ -16,17 +16,6 @@ namespace XMvvmApp.Mvvm
             _bindings.Add(binding);
         }
 
-        public void AddAny<TSubscription>(TSubscription subscription)
-            where TSubscription : class
-        {
-            AddAny(new Binding<TSubscription>(subscription));
-        }
-
-        public void AddAll(IEnumerable<Binding> bindings)
-        {
-            _bindings.AddRange(bindings);
-        }
-
         public void AddAll(BindingCollection bindingCollection)
         {
             _bindings.AddRange(bindingCollection._bindings);
@@ -39,7 +28,7 @@ namespace XMvvmApp.Mvvm
 
         public void DetachAll()
         {
-            foreach (Binding binding in _bindings)
+            foreach (var binding in _bindings)
             {
                 binding.Detach();
             }

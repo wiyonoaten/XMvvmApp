@@ -33,7 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\TypeCastValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateValueConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\UiThreadSchedulerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\UiThreadHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\ViewModelStateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IgnoredPropertyAttribute.cs" />

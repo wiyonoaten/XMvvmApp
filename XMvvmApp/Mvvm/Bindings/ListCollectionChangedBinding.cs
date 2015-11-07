@@ -2,7 +2,7 @@
 
 namespace XMvvmApp.Mvvm.Bindings
 {
-    public class ListCollectionChangedBinding<T> : Binding
+    public class ListCollectionChangedBinding<T> : Binding<NotifyCollectionChangedEventHandler>
     {
         private readonly IObservableReadOnlyList<T> _list;
 
@@ -16,7 +16,7 @@ namespace XMvvmApp.Mvvm.Bindings
 
         public override void Detach()
         {
-            _list.CollectionChanged -= this.Connection as NotifyCollectionChangedEventHandler;
+            _list.CollectionChanged -= this.Connection;
 
             base.Detach();
         }
