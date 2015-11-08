@@ -1,7 +1,6 @@
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
-using Java.IO;
 using System;
 using XMvvmApp.Mvvm;
 
@@ -12,7 +11,8 @@ namespace XMvvmApp.Android.Mvvm.Views
     {
         private const string STATE_KEY_VIEW_MODEL = "viewModel";
 
-        protected abstract TViewModel MakeViewModel();
+        protected abstract TViewModel OnMakeViewModel();
+
         protected abstract View OnSetupView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState, out bool retHasOptionsMenu);
         protected abstract void OnBindViewsWithViewModel();
 
@@ -20,15 +20,19 @@ namespace XMvvmApp.Android.Mvvm.Views
         protected virtual void OnBindMenuItemsWithViewModel() { throw new NotImplementedException(); }
 
         protected TViewModel ViewModel { get; private set; }
-        protected BindingCollection Bindings { get; private set; }
+        protected BindingCollection Bindings { get; }
         protected IMenu Menu { get; private set; }
+
+        protected BaseViewModelFragment()
+        {
+            this.Bindings = new BindingCollection();
+        }
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            this.ViewModel = MakeViewModel();
-            this.Bindings = new BindingCollection();
+            this.ViewModel = OnMakeViewModel();
         }
 
         public override void OnDestroy()

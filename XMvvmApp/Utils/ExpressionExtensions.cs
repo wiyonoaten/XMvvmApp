@@ -71,7 +71,8 @@ namespace XMvvmApp.Utils
             return lambdaObjExp.Compile()();
         }
 
-        public static void SetPropertyValue<T>(this Expression<Func<T>> propertyExp, T value)
+        public static void SetPropertyValue<T>(this Expression<Func<T>> propertyExp, 
+            T value)
         {
             if (propertyExp == null)
             {

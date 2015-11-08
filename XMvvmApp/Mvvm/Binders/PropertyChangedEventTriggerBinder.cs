@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using XMvvmApp.Utils;
 
 namespace XMvvmApp.Mvvm.Binders
 {
@@ -51,10 +52,7 @@ namespace XMvvmApp.Mvvm.Binders
 
             private void _HandlePropertyChanged(object sender, PropertyChangedEventArgs args)
             {
-                if (_propertyChanged != null)
-                {
-                    _propertyChanged(sender, args);
-                }
+                _propertyChanged.TriggerSafely(sender, args);
             }
         }
     }

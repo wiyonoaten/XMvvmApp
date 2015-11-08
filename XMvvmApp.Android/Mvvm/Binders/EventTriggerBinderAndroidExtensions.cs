@@ -29,5 +29,11 @@ namespace XMvvmApp.Android.Mvvm.Binders
             }));
             return binder;
         }
+
+        public static EventTriggerBinder<T> BindToAlertDialogMessage<T>(this EventTriggerBinder<T> binder,
+            Context context, int titleResourceId, IValueConverter<T, string> valueConverter = null)
+        {
+            return binder.BindToAlertDialogMessage(context, context.GetString(titleResourceId), valueConverter);
+        }
     }
 }

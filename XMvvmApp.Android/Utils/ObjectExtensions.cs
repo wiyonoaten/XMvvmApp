@@ -2,13 +2,13 @@
 {
     public static class ObjectExtensions
 	{
-		public static Java.Lang.Object ToJavaObj<T>(this T value)
+		public static Java.Lang.Object ToJavaObj<T>(this T obj)
 		{
-			if (value == null) 
+			if (obj == null) 
 			{
 				return null;
 			}
-			return new JavaObject<T>(value);
+			return new JavaObject<T>(obj);
 		}
 
 		private class JavaObject<T> : Java.Lang.Object

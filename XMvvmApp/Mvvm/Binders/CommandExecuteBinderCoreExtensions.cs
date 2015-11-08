@@ -5,17 +5,41 @@ namespace XMvvmApp.Mvvm.Binders
 {
     public static class CommandExecuteBinderCoreExtensions
     {
-        // If the binder object was created with ParamDelegate, then the command will be executed using that delegate value,
-        // otherwise the EventArgs (converted if valueConverter is provided) from the raised event will be used instead.
+        public static bool ExecuteCommandIfCan<T>(this CommandExecuteBinder<T> binder)
+        {
+            var param = binder.ParamDelegate != null
+                ? binder.ParamDelegate.Invoke()
+                : default(T);
+
+            if (false == binder.Command.CanExecute(param))
+            {
+                return false;
+            }
+            binder.Command.Execute(param);
+            return true;
+        }
+
+        public static bool ExecuteCommandWithArgsIfCan<T, TArgs>(this CommandExecuteBinder<T> binder,
+            TArgs args, IValueConverter<TArgs, T> valueConverter)
+        {
+            var param = binder.ParamDelegate != null
+                ? binder.ParamDelegate.Invoke()
+                : valueConverter.GetTargetValue(args);
+
+            if (false == binder.Command.CanExecute(param))
+            {
+                return false;
+            }
+            binder.Command.Execute(param);
+            return true;
+        }
+
         public static CommandExecuteBinder<T> BindFromEvent<T>(this CommandExecuteBinder<T> binder,
-            Action<EventHandler> evAddDelegate, Action<EventHandler> evRemoveDelegate, 
-            IValueConverter<EventArgs, T> valueConverter = null)
+            Action<EventHandler> evAddDelegate, Action<EventHandler> evRemoveDelegate)
         {
             binder.Bindings.Add(new EventHandlerBinding(evAddDelegate, evRemoveDelegate, (sender, args) =>
             {
-                binder.Command.Execute(binder.ParamDelegate != null
-                    ? binder.ParamDelegate.Invoke()
-                    : valueConverter.GetTargetValue(args));
+                binder.ExecuteCommandIfCan();
             }));
             return binder;
         }
@@ -28,9 +52,7 @@ namespace XMvvmApp.Mvvm.Binders
         {
             binder.Bindings.Add(new EventHandlerBinding<TEventArgs>(evAddDelegate, evRemoveDelegate, (sender, args) =>
             {
-                binder.Command.Execute(binder.ParamDelegate != null 
-                    ? binder.ParamDelegate.Invoke() 
-                    : valueConverter.GetTargetValue(args));
+                binder.ExecuteCommandWithArgsIfCan(args, valueConverter);
             }));
             return binder;
         }

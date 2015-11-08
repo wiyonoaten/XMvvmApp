@@ -46,6 +46,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ObservableList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ObservableReadOnlyList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Platform\IThreadScheduler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\EventHandlerExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ExpressionExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ObjectExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\WeakReferenceExtensions.cs" />
