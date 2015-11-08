@@ -6,7 +6,7 @@ namespace XMvvmApp.Utils
 {
     public static class ExpressionExtensions
     {
-        public static string GetPropertyName<T>(this Expression<Func<T>> propertyExp)
+        public static PropertyInfo GetPropertyInfo<T>(this Expression<Func<T>> propertyExp)
         {
             if (propertyExp == null)
             {
@@ -26,6 +26,13 @@ namespace XMvvmApp.Utils
             {
                 throw new ArgumentException("Not a valid property expression", nameof(propertyExp));
             }
+
+            return property;
+        }
+
+        public static string GetPropertyName<T>(this Expression<Func<T>> propertyExp)
+        {
+            var property = propertyExp.GetPropertyInfo();
 
             return property.Name;
         }

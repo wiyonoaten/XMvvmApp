@@ -9,6 +9,8 @@
     <Import_RootNamespace>XMvvmApp</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\IUiThreadAwareViewModelExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\IUiThreadAwareViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BasicViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandExecuteBinderCoreExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandCanExecuteBinderCoreExtensions.cs" />
