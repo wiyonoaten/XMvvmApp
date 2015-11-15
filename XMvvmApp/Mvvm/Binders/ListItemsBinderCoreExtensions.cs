@@ -24,16 +24,16 @@ namespace XMvvmApp.Mvvm.Binders
                         break;
 
                     case NotifyCollectionChangedAction.Remove:
-                        foreach (T item in args.OldItems)
+                        foreach (var item in args.OldItems)
                         {
-                            targetList.Remove(item);
+                            targetList.Remove((T)item);
                         }
                         break;
 
                     case NotifyCollectionChangedAction.Replace:
-                        foreach (T item in args.OldItems)
+                        foreach (var item in args.OldItems)
                         {
-                            targetList.Remove(item);
+                            targetList.Remove((T)item);
                         }
                         for (int i = 0; i < args.NewItems.Count; i++)
                         {

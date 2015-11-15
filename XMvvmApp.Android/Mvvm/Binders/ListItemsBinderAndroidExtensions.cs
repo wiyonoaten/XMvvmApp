@@ -36,18 +36,18 @@ namespace XMvvmApp.Android.Mvvm.Binders
 
                     case NotifyCollectionChangedAction.Remove:
                         adapter_.SetNotifyOnChange(false);
-                        foreach (T item in args.OldItems)
+                        foreach (var item in args.OldItems)
                         {
-                            adapter_.Remove(item);
+                            adapter_.Remove((T)item);
                         }
                         adapter_.NotifyDataSetChanged();
                         break;
 
                     case NotifyCollectionChangedAction.Replace:
                         adapter_.SetNotifyOnChange(false);
-                        foreach (T item in args.OldItems)
+                        foreach (var item in args.OldItems)
                         {
-                            adapter_.Remove(item);
+                            adapter_.Remove((T)item);
                         }
                         for (int i = 0; i < args.NewItems.Count; i++)
                         {
