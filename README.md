@@ -1,4 +1,4 @@
-# XMvvmApp
+# Xvvm
 
 A library of code to provide a cross-platform application framework that leverages Xamarin and MVVM application architecture.
 
