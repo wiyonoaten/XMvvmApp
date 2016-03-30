@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>9e85533a-bc88-4c58-8ae6-f950af8c0ca4</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Xvvm</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)DependencyService\DependencyAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DependencyService\DependencyNotResolvedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DependencyService\DependencyService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\IUiThreadAwareViewModelExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\IUiThreadAwareViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BasicViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandExecuteBinderCoreExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandCanExecuteBinderCoreExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandCanExecuteBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\CommandExecuteBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\EventTriggerBinderCoreExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\EventTriggerBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\ListItemsBinderCoreExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\ListItemsBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyChangedEventTriggerBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyValueBinderCoreExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binders\PropertyValueBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Binding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindingCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\DelegateBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\EventHandlerBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\ListCollectionChangedBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Bindings\PropertyChangedBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\InvertedBoolValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\IntToBoolValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\StringFormatValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Converters\TypeCastValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\UiThreadHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Helpers\ViewModelStateHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IgnoredPropertyAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IObservableReadOnlyList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IObservableList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IValueConverterExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\IViewModelExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ObservableList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ObservableReadOnlyList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\IThreadScheduler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\EventHandlerExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ExpressionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ObjectExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\WeakReferenceExtensions.cs" />
+  </ItemGroup>
+</Project>
