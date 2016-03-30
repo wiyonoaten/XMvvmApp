@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>WiyonoAten.Xvvm</id>
+        <version>0.9.0</version>
+        <title>Xvvm</title>
+        <authors>Wiyono Aten</authors>
+        <owners>wiyonoaten</owners>
+        <projectUrl>https://github.com/wiyonoaten/Xvvm</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A library of code to provide a cross-platform application framework that leverages Xamarin and MVVM application architecture.</description>
+        <copyright>Copyright © 2015-2016 Wiyono Aten</copyright>
+        <dependencies>
+            <group targetFramework="MonoAndroid0.0">
+                <dependency id="Newtonsoft.Json" version="7.0.1" />
+                <dependency id="Xamarin.Android.Support.v4" version="22.2.0.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="..\Xvvm.Android\bin\Debug\Xvvm.Android.dll" target="lib\MonoAndroid\Xvvm.Android.dll" />
+        <file src="..\Xvvm.Android\bin\Debug\Xvvm.Android.pdb" target="lib\MonoAndroid\Xvvm.Android.pdb" />
+    </files>
+</package>
